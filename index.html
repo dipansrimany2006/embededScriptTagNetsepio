@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat Widget Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .demo-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        
+        .demo-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .demo-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo-content">
+        <h1>AI Chat Widget Demo</h1>
+        <p>This is a demo website. Look for the chat button in the bottom right corner!</p>
+        <p>The widget is loaded with a simple script tag and works on any website.</p>
+    </div>
+
+    <!-- AI Chat Widget Script -->
+     <script>
+  window.aiChatConfig = {
+    apiUrl: 'https://cyrene.us01.erebrus.io/b450db11-332b-0fc2-a144-92824a34f699/message',
+    agentName: 'Cyrene',
+    primaryColor: '#1366d9',
+    position: "bottom-right",
+  };
+</script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
