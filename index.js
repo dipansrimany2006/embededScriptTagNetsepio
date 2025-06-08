@@ -43,7 +43,7 @@
   const style = document.createElement("style");
   style.textContent = `
         /* Widget Container */
-        #cyrene-widget {
+        #agent-widget {
             position: fixed;
             ${positions[config.position]}
             z-index: 10000;
@@ -51,7 +51,7 @@
         }
 
         /* Chat Button */
-        #cyrene-button {
+        #agent-button {
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -69,17 +69,17 @@
             overflow: hidden;
         }
 
-        #cyrene-button:hover {
+        #agent-button:hover {
             transform: scale(1.05);
             box-shadow: 0 6px 25px rgba(0,0,0,0.25);
         }
 
-        #cyrene-button:active {
+        #agent-button:active {
             transform: scale(0.98);
         }
 
         /* Button pulse animation when closed */
-        #cyrene-button.pulse::before {
+        #agent-button.pulse::before {
             content: '';
             position: absolute;
             top: 0;
@@ -98,7 +98,7 @@
         }
 
         /* Chat Panel */
-        #cyrene-panel {
+        #agent-panel {
             position: absolute;
             bottom: 80px;
             right: 0;
@@ -117,28 +117,28 @@
             border: 1px solid #e2e8f0;
         }
 
-        #cyrene-panel.open {
+        #agent-panel.open {
             transform: translateY(0) scale(1);
             opacity: 1;
             visibility: visible;
         }
 
-        #cyrene-panel.minimized {
+        #agent-panel.minimized {
             height: 60px;
         }
 
         /* Position adjustments for different corners */
-        #cyrene-widget[data-position="bottom-left"] #cyrene-panel {
+        #agent-widget[data-position="bottom-left"] #agent-panel {
             right: auto;
             left: 0;
         }
 
-        #cyrene-widget[data-position="top-right"] #cyrene-panel {
+        #agent-widget[data-position="top-right"] #agent-panel {
             bottom: auto;
             top: 80px;
         }
 
-        #cyrene-widget[data-position="top-left"] #cyrene-panel {
+        #agent-widget[data-position="top-left"] #agent-panel {
             bottom: auto;
             top: 80px;
             right: auto;
@@ -146,7 +146,7 @@
         }
 
         /* Header */
-        #cyrene-header {
+        #agent-header {
             padding: 20px;
             background: linear-gradient(135deg, ${
               config.primaryColor
@@ -159,19 +159,19 @@
             flex-shrink: 0;
         }
 
-        #cyrene-header:hover {
+        #agent-header:hover {
             background: linear-gradient(135deg, #1e40af, ${
               config.primaryColor
             });
         }
 
-        .cyrene-agent-info {
+        .agent-agent-info {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .cyrene-avatar {
+        .agent-avatar {
             width: 36px;
             height: 36px;
             border-radius: 50%;
@@ -184,13 +184,13 @@
             flex-shrink: 0;
         }
 
-        .cyrene-agent-details h3 {
+        .agent-agent-details h3 {
             margin: 0;
             font-size: 16px;
             font-weight: 600;
         }
 
-        .cyrene-status {
+        .agent-status {
             margin: 0;
             font-size: 12px;
             opacity: 0.9;
@@ -199,7 +199,7 @@
             gap: 4px;
         }
 
-        .cyrene-status::before {
+        .agent-status::before {
             content: '';
             width: 8px;
             height: 8px;
@@ -208,12 +208,12 @@
             display: inline-block;
         }
 
-        .cyrene-controls {
+        .agent-controls {
             display: flex;
             gap: 8px;
         }
 
-        .cyrene-control-btn {
+        .agent-control-btn {
             background: none;
             border: none;
             color: white;
@@ -228,12 +228,12 @@
             transition: background 0.2s;
         }
 
-        #cyrene-close:hover {
+        #agent-close:hover {
             background: rgba(255,255,255,0.2);
         }
 
         /* Messages */
-        #cyrene-messages {
+        #agent-messages {
             flex: 1;
             padding: 20px;
             overflow-y: auto;
@@ -243,21 +243,21 @@
             gap: 16px;
         }
 
-        #cyrene-panel.minimized #cyrene-messages {
+        #agent-panel.minimized #agent-messages {
             display: none;
         }
 
-        .cyrene-message {
+        .agent-message {
             display: flex;
             gap: 12px;
             align-items: flex-start;
         }
 
-        .cyrene-message.user {
+        .agent-message.user {
             flex-direction: row-reverse;
         }
 
-        .cyrene-message-avatar {
+        .agent-message-avatar {
             width: 32px;
             height: 32px;
             border-radius: 50%;
@@ -269,17 +269,17 @@
             flex-shrink: 0;
         }
 
-        .cyrene-message.user .cyrene-message-avatar {
+        .agent-message.user .agent-message-avatar {
             background: ${config.primaryColor};
             color: white;
         }
 
-        .cyrene-message.bot .cyrene-message-avatar {
+        .agent-message.bot .agent-message-avatar {
             background: #e5e7eb;
             color: #6b7280;
         }
 
-        .cyrene-message-content {
+        .agent-message-content {
             max-width: 75%;
             padding: 12px 16px;
             border-radius: 18px;
@@ -288,13 +288,13 @@
             position: relative;
         }
 
-        .cyrene-message.user .cyrene-message-content {
+        .agent-message.user .agent-message-content {
             background: ${config.primaryColor};
             color: white;
             border-bottom-right-radius: 4px;
         }
 
-        .cyrene-message.bot .cyrene-message-content {
+        .agent-message.bot .agent-message-content {
             background: white;
             color: #374151;
             border: 1px solid #e5e7eb;
@@ -302,7 +302,7 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
-        .cyrene-timestamp {
+        .agent-timestamp {
             font-size: 11px;
             color: #9ca3af;
             text-align: center;
@@ -310,25 +310,25 @@
         }
 
         /* Input Area */
-        #cyrene-input-area {
+        #agent-input-area {
             padding: 16px 20px 20px;
             background: white;
             border-top: 1px solid #e5e7eb;
             flex-shrink: 0;
         }
 
-        #cyrene-panel.minimized #cyrene-input-area {
+        #agent-panel.minimized #agent-input-area {
             display: none;
         }
 
-        .cyrene-input-container {
+        .agent-input-container {
             position: relative;
             display: flex;
             align-items: flex-end;
             gap: 8px;
         }
 
-        #cyrene-input {
+        #agent-input {
             flex: 1;
             padding: 12px 16px;
             border: 1px solid #e5e7eb;
@@ -343,16 +343,16 @@
             background: #f9fafb;
         }
 
-        #cyrene-input:focus {
+        #agent-input:focus {
             border-color: ${config.primaryColor};
             background: white;
         }
 
-        #cyrene-input::placeholder {
+        #agent-input::placeholder {
             color: #9ca3af;
         }
 
-        #cyrene-send {
+        #agent-send {
             background: ${config.primaryColor};
             border: none;
             border-radius: 50%;
@@ -368,19 +368,19 @@
             flex-shrink: 0;
         }
 
-        #cyrene-send:hover:not(:disabled) {
+        #agent-send:hover:not(:disabled) {
             background: #1e40af;
             transform: scale(1.05);
         }
 
-        #cyrene-send:disabled {
+        #agent-send:disabled {
             background: #d1d5db;
             cursor: not-allowed;
             transform: none;
         }
 
         /* Typing Indicator */
-        .cyrene-typing {
+        .agent-typing {
             display: flex;
             gap: 4px;
             padding: 12px 16px;
@@ -392,25 +392,25 @@
             width: fit-content;
         }
 
-        .cyrene-typing-dot {
+        .agent-typing-dot {
             width: 6px;
             height: 6px;
             border-radius: 50%;
             background: #9ca3af;
-            animation: cyrene-typing 1.4s infinite ease-in-out;
+            animation: agent-typing 1.4s infinite ease-in-out;
         }
 
-        .cyrene-typing-dot:nth-child(1) { animation-delay: -0.32s; }
-        .cyrene-typing-dot:nth-child(2) { animation-delay: -0.16s; }
-        .cyrene-typing-dot:nth-child(3) { animation-delay: 0s; }
+        .agent-typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .agent-typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        .agent-typing-dot:nth-child(3) { animation-delay: 0s; }
 
-        @keyframes cyrene-typing {
+        @keyframes agent-typing {
             0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
             40% { opacity: 1; transform: scale(1); }
         }
 
         /* Notification Badge */
-        .cyrene-notification {
+        .agent-notification {
             position: absolute;
             top: -8px;
             right: -8px;
@@ -435,71 +435,71 @@
 
         /* Mobile Responsive */
         @media (max-width: 640px) {
-            #cyrene-panel {
+            #agent-panel {
                 width: calc(100vw - 40px);
                 right: 20px;
                 left: 20px;
                 max-width: 380px;
             }
 
-            #cyrene-widget[data-position="bottom-left"] #cyrene-panel {
+            #agent-widget[data-position="bottom-left"] #agent-panel {
                 left: 20px;
                 right: 20px;
             }
 
-            #cyrene-panel {
+            #agent-panel {
                 height: 500px;
             }
 
-            #cyrene-header {
+            #agent-header {
                 padding: 16px;
             }
 
-            .cyrene-avatar {
+            .agent-avatar {
                 width: 32px;
                 height: 32px;
                 font-size: 14px;
             }
 
-            .cyrene-agent-details h3 {
+            .agent-agent-details h3 {
                 font-size: 14px;
             }
 
-            #cyrene-messages {
+            #agent-messages {
                 padding: 16px;
             }
 
-            #cyrene-input-area {
+            #agent-input-area {
                 padding: 12px 16px 16px;
             }
         }
 
         /* High contrast mode support */
         @media (prefers-contrast: high) {
-            #cyrene-panel {
+            #agent-panel {
                 border: 2px solid #000;
             }
             
-            .cyrene-message.bot .cyrene-message-content {
+            .agent-message.bot .agent-message-content {
                 border: 2px solid #374151;
             }
         }
 
         /* Scrollbar styling */
-        #cyrene-messages::-webkit-scrollbar {
+        #agent-messages::-webkit-scrollbar {
             width: 6px;
         }
 
-        #cyrene-messages::-webkit-scrollbar-track {
+        #agent-messages::-webkit-scrollbar-track {
             background: transparent;
         }
 
-        #cyrene-messages::-webkit-scrollbar-thumb {
+        #agent-messages::-webkit-scrollbar-thumb {
             background: #d1d5db;
             border-radius: 3px;
         }
 
-        #cyrene-messages::-webkit-scrollbar-thumb:hover {
+        #agent-messages::-webkit-scrollbar-thumb:hover {
             background: #9ca3af;
         }
     `;
@@ -507,39 +507,39 @@
 
   // Create widget HTML
   const widget = document.createElement("div");
-  widget.id = "cyrene-widget";
+  widget.id = "agent-widget";
   widget.setAttribute("data-position", config.position);
   widget.innerHTML = `
-        <button id="cyrene-button" class="pulse">
+        <button id="agent-button" class="pulse">
             ${config.buttonIcon}
         </button>
         
-        <div id="cyrene-panel">
-            <div id="cyrene-header">
-                <div class="cyrene-agent-info">
-                    <div class="cyrene-avatar">
+        <div id="agent-panel">
+            <div id="agent-header">
+                <div class="agent-agent-info">
+                    <div class="agent-avatar">
                     AI
                     </div>
-                    <div class="cyrene-agent-details">
+                    <div class="agent-agent-details">
                         <h3>${config.agentName}</h3>
-                        <p class="cyrene-status">Online</p>
+                        <p class="agent-status">Online</p>
                     </div>
                 </div>
-                <div class="cyrene-controls">
-                    <button id="cyrene-minimize" class="cyrene-control-btn"></button>
-                    <button id="cyrene-close" class="cyrene-control-btn" title="Close">-</button>
+                <div class="agent-controls">
+                    <button id="agent-minimize" class="agent-control-btn"></button>
+                    <button id="agent-close" class="agent-control-btn" title="Close">-</button>
                 </div>
             </div>
             
-            <div id="cyrene-messages">
-                <div class="cyrene-message bot">
-                    <div class="cyrene-message-avatar">AI</div>
-                    <div class="cyrene-message-content">
+            <div id="agent-messages">
+                <div class="agent-message bot">
+                    <div class="agent-message-avatar">AI</div>
+                    <div class="agent-message-content">
                         ${
                           config.greeting ||
                           `Hi! I'm ${config.agentName}. How can I help you today?`
                         }
-                        <div class="cyrene-timestamp">${new Date().toLocaleTimeString(
+                        <div class="agent-timestamp">${new Date().toLocaleTimeString(
                           [],
                           { hour: "2-digit", minute: "2-digit" }
                         )}</div>
@@ -547,12 +547,12 @@
                 </div>
             </div>
             
-            <div id="cyrene-input-area">
-                <div class="cyrene-input-container">
-                    <textarea id="cyrene-input" placeholder="${
+            <div id="agent-input-area">
+                <div class="agent-input-container">
+                    <textarea id="agent-input" placeholder="${
                       config.placeholder
                     }" rows="1"></textarea>
-                    <button id="cyrene-send">→</button>
+                    <button id="agent-send">→</button>
                 </div>
             </div>
         </div>
@@ -561,14 +561,14 @@
   document.body.appendChild(widget);
 
   // Widget functionality
-  const button = document.getElementById("cyrene-button");
-  const panel = document.getElementById("cyrene-panel");
-  const closeBtn = document.getElementById("cyrene-close");
-  const minimizeBtn = document.getElementById("cyrene-minimize");
-  const header = document.getElementById("cyrene-header");
-  const input = document.getElementById("cyrene-input");
-  const sendBtn = document.getElementById("cyrene-send");
-  const messagesContainer = document.getElementById("cyrene-messages");
+  const button = document.getElementById("agent-button");
+  const panel = document.getElementById("agent-panel");
+  const closeBtn = document.getElementById("agent-close");
+  const minimizeBtn = document.getElementById("agent-minimize");
+  const header = document.getElementById("agent-header");
+  const input = document.getElementById("agent-input");
+  const sendBtn = document.getElementById("agent-send");
+  const messagesContainer = document.getElementById("agent-messages");
 
   let isOpen = false;
   let isMinimized = false;
@@ -635,7 +635,7 @@
 
   function addMessage(content, isUser = false) {
     const messageDiv = document.createElement("div");
-    messageDiv.className = `cyrene-message ${isUser ? "user" : "bot"}`;
+    messageDiv.className = `agent-message ${isUser ? "user" : "bot"}`;
 
     const timestamp = new Date().toLocaleTimeString([], {
       hour: "2-digit",
@@ -644,18 +644,18 @@
 
     if (isUser) {
       messageDiv.innerHTML = `
-                <div class="cyrene-message-avatar">You</div>
-                <div class="cyrene-message-content">
+                <div class="agent-message-avatar">You</div>
+                <div class="agent-message-content">
                     ${escapeHtml(content)}
-                    <div class="cyrene-timestamp">${timestamp}</div>
+                    <div class="agent-timestamp">${timestamp}</div>
                 </div>
             `;
     } else {
       messageDiv.innerHTML = `
-                <div class="cyrene-message-avatar">AI</div>
-                <div class="cyrene-message-content">
+                <div class="agent-message-avatar">AI</div>
+                <div class="agent-message-content">
                     ${escapeHtml(content)}
-                    <div class="cyrene-timestamp">${timestamp}</div>
+                    <div class="agent-timestamp">${timestamp}</div>
                 </div>
             `;
     }
@@ -673,13 +673,13 @@
 
   function showTypingIndicator() {
     const typingDiv = document.createElement("div");
-    typingDiv.className = "cyrene-message bot cyrene-typing-message";
+    typingDiv.className = "agent-message bot agent-typing-message";
     typingDiv.innerHTML = `
-            <div class="cyrene-message-avatar">AI</div>
-            <div class="cyrene-typing">
-                <div class="cyrene-typing-dot"></div>
-                <div class="cyrene-typing-dot"></div>
-                <div class="cyrene-typing-dot"></div>
+            <div class="agent-message-avatar">AI</div>
+            <div class="agent-typing">
+                <div class="agent-typing-dot"></div>
+                <div class="agent-typing-dot"></div>
+                <div class="agent-typing-dot"></div>
             </div>
         `;
     messagesContainer.appendChild(typingDiv);
@@ -695,11 +695,11 @@
 
   function showNotification() {
     unreadCount++;
-    let notificationBadge = button.querySelector(".cyrene-notification");
+    let notificationBadge = button.querySelector(".agent-notification");
 
     if (!notificationBadge) {
       notificationBadge = document.createElement("div");
-      notificationBadge.className = "cyrene-notification";
+      notificationBadge.className = "agent-notification";
       button.appendChild(notificationBadge);
     }
 
@@ -708,7 +708,7 @@
 
   function clearNotifications() {
     unreadCount = 0;
-    const notificationBadge = button.querySelector(".cyrene-notification");
+    const notificationBadge = button.querySelector(".agent-notification");
     if (notificationBadge) {
       notificationBadge.remove();
     }
@@ -758,7 +758,7 @@
       removeTypingIndicator(typingIndicator);
       addMessage(botResponse);
     } catch (error) {
-      console.error("cyrene Widget Error:", error);
+      console.error("agent Widget Error:", error);
       removeTypingIndicator(typingIndicator);
       addMessage(
         "I'm sorry, there was an error processing your request. Please try again."
@@ -772,22 +772,21 @@
     }
   }
 
-  // Helper to update agent info in the widget
+  // Helper function to update agent info in the widget
   function updateAgentInfoUI() {
     if (!agentInfo) return;
 
     // Update agent name
     const nameEl = document.querySelector(
-      "#cyrene-header .cyrene-agent-details h3"
+      "#agent-header .agent-agent-details h3"
     );
     if (nameEl && agentInfo.agent.name) {
       nameEl.textContent = agentInfo.agent.name;
-      
     }
 
     // Update Header Avatar image if available
     const HeaderAvatarEl = document.querySelector(
-      "#cyrene-header .cyrene-avatar"
+      "#agent-header .agent-avatar"
     );
     if (HeaderAvatarEl && agentInfo.agent.avatar_img) {
       // If avatar_img is a URL or IPFS hash
@@ -813,7 +812,7 @@
 
     // Update Messages Avatar image if available
     const messageAvatars = document.querySelectorAll(
-      "#cyrene-messages .cyrene-message-avatar"
+      "#agent-messages .agent-message-avatar"
     );
     messageAvatars.forEach((messageAvatar) => {
       if (messageAvatar && agentInfo.agent.avatar_img) {
@@ -837,11 +836,11 @@
         messageAvatar.innerHTML = "";
         messageAvatar.appendChild(img);
       }
-    })
-    };
+    });
+  }
 
   // Make widget globally accessible for customization
-  window.cyreneWidget = {
+  window.agentWidget = {
     open: openPanel,
     close: closePanel,
     minimize: toggleMinimize,
